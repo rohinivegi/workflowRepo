@@ -1,0 +1,37 @@
+on:
+
+  push:
+
+    paths:
+
+      - '.github/workflows/repo-env-var.yml'
+
+  workflow_dispatch:
+
+ 
+
+env:
+
+  HANDLE: 'glensouza'
+
+ 
+
+jobs:
+
+  say-hello:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: local env
+
+        run: echo hello $HANDLE
+
+      - name: repo env
+
+        run: echo hello ${{ vars.ACTIONVAR }}
+
+      - name: repo secret
+
+        run: echo hello ${{ secrets.SUPERSECRET }}
